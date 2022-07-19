@@ -1,10 +1,10 @@
 const express = require('express')
-const sqlite3 = require('sqlite3')
+const sqlite = require('sqlite')
 const app = express();
 
 app.use(express.json());
 
-const db = new sqlite3.Database('./data/data_loja.db', (err) => {
+const database = new sqlite.Database('./data_loja', (err) => {
     if (err) {
         console.log("Erro ao abrir base de dados " + err.message);
     } else {
@@ -12,9 +12,9 @@ const db = new sqlite3.Database('./data/data_loja.db', (err) => {
     }
 })
 
-app.post("/cliente", (req, res, next) => {
-    db.run("INSERT INTO cliente (cpf_cliente,nome_cliente,endereco_cliente,cep_cliente,email_cliente,senha_cliente)VALUES(?,?,?,?,?,?)",
-    [req.body.cpf,req.body.nome,req.body.endereco,req.body.cep,req.body.email,req.body.senha],
+app.post("/clientes", (req, res, next) => {
+    database.run("INSERT INTO CLIENTE (cpf_cliente,nome_cliente,endereco_cliente,cep_cliente,email_cliente,senha_cliente) VALUES(?,?,?,?,?,?)",
+    [req.body.cpf, req.body.nome, req.body.endereco, req.body.cep, req.body.email, req.body.senha],
     function(err, result){
         if(err) {
             res.status(400).json({ "error": err.message })
@@ -28,5 +28,5 @@ app.post("/cliente", (req, res, next) => {
 
 
 app.listen(3306, () => {
-    console.log('Iniciando o ExpressJS na porta 3306')
+    console.log('Iniciando o ExpressJS na porta 3000')
 })

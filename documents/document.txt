@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+----------------------------react-loja-----------------------------
+-------------------------------------------------------------------
+1 - npx create-react-app react-loja
+2 - cd react-loja
+3 - npm start
+-------------------------------------------------------------------
+----------------------------node-loja-----------------------------
+-------------------------------------------------------------------
+1 - npm init
+2 - npm i express
+3 - npm i nodemon
+4 - modificar arquivo package.json
+        "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start-nodemon": "nodemon index.js"
+        }
+5 - npm i sqlite3
+6 - npm run start-nodemon
