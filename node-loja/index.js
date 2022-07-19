@@ -18,7 +18,7 @@ app.post("/cliente", (req, res, next) => {
     function(err, result){
         if(err) {
             res.status(400).json({ "error": err.message })
-            return;
+            return; 
         }
         res.status(201).json({
             "ID": this.lastID
