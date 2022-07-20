@@ -17,3 +17,5 @@
         }
 5 - npm i sqlite3
 6 - npm run start-nodemon
+7 - criptografar senha
+        npm i bcrypt
