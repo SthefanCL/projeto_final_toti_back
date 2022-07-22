@@ -2,11 +2,13 @@ import Express from 'express';
 import bcrypt from 'bcrypt';
 import sqlite3 from 'sqlite3';
 import {open} from 'sqlite';
+import cors from 'cors';
 
 const salt = bcrypt.genSaltSync(10);
 
 const app = Express();
 
+app.use(cors());
 app.use(Express.json());
 
 const db = new sqlite3.Database('./data/data_loja.db', (err) => {
