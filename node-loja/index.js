@@ -22,8 +22,8 @@ const db = new sqlite3.Database('./data/data_loja.db', (err) => {
 
 app.post("/cliente",(req, res, next) => {
   const senhaCriptografada = bcrypt.hashSync(req.body.senha, salt);
-    db.run("INSERT INTO cliente (cpf_cliente,nome_cliente,endereco_cliente,cep_cliente,email_cliente,senha_cliente)VALUES(?,?,?,?,?,?)",
-        [req.body.cpf, req.body.nome, req.body.endereco, req.body.cep, req.body.email, senhaCriptografada],
+    db.run("INSERT INTO cliente (cpf_cliente,nome_cliente,endereco_cliente,cep_cliente,telefone_cliente,email_cliente,senha_cliente)VALUES(?,?,?,?,?,?,?)",
+        [req.body.cpf, req.body.nome, req.body.endereco, req.body.cep, req.body.telefone, req.body.email, senhaCriptografada],
         function(err, result){
             if(err) {
                 res.status(400).json({ "error": err.message })
@@ -67,8 +67,8 @@ app.post("/login", confirmaLogin, (req, res) =>  {
 
 app.put("/cliente",(req, res, next) => {
     const senhaCriptografada = bcrypt.hashSync(req.body.senha, salt);
-      db.run("UPDATE cliente SET cpf_cliente=?, nome_cliente=?, endereco_cliente=?, cep_cliente=?, email_cliente=?, senha_cliente=? WHERE id_cliente=?",
-          [req.body.cpf, req.body.nome, req.body.endereco, req.body.cep, req.body.email, senhaCriptografada, req.body.id],
+      db.run("UPDATE cliente SET cpf_cliente=?, nome_cliente=?, endereco_cliente=?, cep_cliente=?, telefone_cliente=?, email_cliente=?, senha_cliente=? WHERE id_cliente=?",
+          [req.body.cpf, req.body.nome, req.body.endereco, req.body.cep, req.body.telefone, req.body.email, senhaCriptografada, req.body.id],
           function(err, result){
               if(err) {
                   res.status(400).json({ "error": err.message })
