@@ -4,6 +4,7 @@
 1 - npx create-react-app react-loja
 2 - cd react-loja
 3 - npm start
+4 - npm i axios
 -------------------------------------------------------------------
 ----------------------------node-loja-----------------------------
 -------------------------------------------------------------------
@@ -22,3 +23,4 @@
 6 - npm run start-nodemon
 7 - criptografar senha
         npm i bcrypt
+8 - npm i cors
