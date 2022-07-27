@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import Cards from "./Cards.js";
+import "../img/img1.jpg";
 
 export default function Home() {
 

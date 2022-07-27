@@ -9,8 +9,9 @@
 }
 .container form{
   background-color:#C9D6DD ;
-  padding: 40px;
-  border-radius: 40px;
+  padding:  5px 20px 5px 20px;
+  border-radius: 10px;
+  margin-top: 10px;
 }
 .container input{
   border: 2px solid #EEF4F8;
@@ -40,29 +41,53 @@
   display: flex;
   justify-content: flex-end;
 }
+.buttonNew{  
+  display: flex;
+  justify-content:center;
+}
+.buttonNew:hover{
+  cursor: pointer;
+  color: black;
+  font-size: 20px;
+}
 .Home{
     display: flex;
     justify-content: center; 
     flex-wrap: wrap;
 }
 .Cards{
-  margin: 10px;
+  margin: 20px 10px 20px 10px;
   border: 1px solid #154360;
-  padding: 20px;
   border-radius: 5px;
 }
 .img_produto{
   background-color: black;
-  height: 100px;
+  height: 150px;
 }
 .Cards p{
   margin: 10px;
+  font-weight: bold;
+
 }
 .Cards:hover{
   cursor: pointer;
   background-color: #C9D6DD;
+  margin: 1%;
 }
 .Menu{
   display: flex;
   justify-content: space-between;
+  background-color: #154360;
+  padding:  0 20px 0 20px;
+}
+
+.Menu p{
+  color: white;
+  font-size: 20px;
+}
+.Menu p:hover{
+  cursor: pointer;
+  background-color: #B7D4E5;
+  color: black;
+  padding: 0 2px 0 2px;
 }

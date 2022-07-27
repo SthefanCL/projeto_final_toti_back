@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export default function NovoCliente() {
+
+  const Navigate = useNavigate();
 
   const [data, setData] = useState ({id: null, cpf: "", nome: "", endereco: "", cep: "", telefone: "", email: "", senha: ""})
 
@@ -16,13 +19,16 @@ export default function NovoCliente() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    await axios.post(URL,data);
+    const cliente = await axios.post(URL,data);
+    if (cliente){
+      Navigate('/login');
+    }else
+     console.error();
   }
 
   return (
     <div className="container">
       <div className="NewContact">
-        <h1 className="agr">Salvar novo Cliente</h1>
             <form onSubmit={handleSubmit}>
               <label><h3>CPF:
                   <input
@@ -95,7 +101,7 @@ export default function NovoCliente() {
                   /></h3>
               </label>
               <div className="button">                
-                <button className="salvar" type="submit">Salvar</button>
+                <button className="salvar" type="submit">Cadastrarme</button>
               </div>
             </form>
       </div>
