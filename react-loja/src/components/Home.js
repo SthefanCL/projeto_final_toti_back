@@ -1,29 +1,29 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
+import Cards from "./Cards.js";
 
 export default function Home() {
 
-    const URL = "http://localhost:3001/produtos"
-    const [state, setState] = useState([])
+  const URL = "http://localhost:3001/produtos";
 
-    const getData = async () => {
-        const response = await axios.get(URL);
-        return response;
-    }
+  const [state, setState] = useState([]);
 
-    useEffect(() => {
-        getData().then((response) => {
-            setState(response.data);
-            })
-    }, [])
+  const getData = async () => {
+    const response = await axios.get(URL);
+    return response;
+  };
 
-    return (
-      <div>
-        { state.map( (produto) => (
-                    <tr key={produto.id_produto}>
-                    <td>{produto.nome_produto}</td>
-                    </tr>                    
-                ))}
-      </div>
-    );
+  useEffect(() => {
+    getData().then((response) => {
+      setState(response.data)
+    })
+  }, []);
+
+  return (
+    <div className="Home">
+      {state.map((produto, key) => (
+        <Cards key={key} produto={produto} />
+      ))}
+    </div> 
+  );
 }

@@ -108,7 +108,7 @@ app.get("/produtos", (req, res, next) => {
             res.status(400).json({ "error": err.message });
             return;
         }
-        res.status(200).json({ rows });
+        res.status(200).json(rows);
     });
 });
 
@@ -118,7 +118,7 @@ app.get("/produto", (req, res, next) => {
           res.status(400).json({ "error": err.message });
           return;
       }
-      res.status(200).json({ rows });
+      res.status(200).json(rows);
   });
 });
 
@@ -162,7 +162,7 @@ app.get("/pedidos", (req, res, next) => {
           res.status(400).json({ "error": err.message });
           return;
       }
-      res.status(200).json({ rows });
+      res.status(200).json(rows);
   });
 });
 

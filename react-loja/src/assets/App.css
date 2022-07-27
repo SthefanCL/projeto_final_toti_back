@@ -3,11 +3,9 @@
     text-decoration: none;
     color: #154360;
 }
-.App{
-  display: flex;
-  justify-content: center;
-}
+
 .container form{
+  width: 30%;
   background-color:#C9D6DD ;
   padding: 40px;
   border-radius: 40px;
@@ -39,4 +37,23 @@
 .button{  
   display: flex;
   justify-content: flex-end;
+}
+.Home{
+  display: flex;
+}
+.Cards{
+  margin: 10px;
+  border: 1px solid #154360;
+  padding: 20px;
+  border-radius: 5px;
+}
+.img_produto{
+  height: 100px;
+}
+.Cards p{
+  margin: 10px;
+}
+.Cards:hover{
+  cursor: pointer;
+  background-color: #B7D4E5;
 }
