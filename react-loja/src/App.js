@@ -17,10 +17,13 @@ export default function App() {
                 <Link to="/"><button className="Home">Home</button></Link>
                 <Link to="/new"><button className="buttonNovo">Novo Cliente</button></Link>
               </div>
-          <Routes>
-              <Route exact path="/" element={<Home />} />
-              <Route exact path="/new" element={<NovoCliente />} />
-          </Routes>
+              <div className="centro">
+                <Routes>
+                  <Route exact path="/" element={<Home />} />
+                  <Route exact path="/new" element={<NovoCliente />} />
+                </Routes>
+              </div>
+          
       </BrowserRouter>
      </div>
   );
