@@ -92,10 +92,10 @@ export default function NovoCliente() {
               </label>
               <label><h3>Senha:
                   <input
-                    type="text"
-                    name="email"
+                    type="password"
+                    name="senha"
                     placeholder="Senha"
-                    defaultValue={data.email}
+                    defaultValue={data.senha}
                     onChange={handleChange}
                     required
                   /></h3>

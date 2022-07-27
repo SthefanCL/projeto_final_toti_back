@@ -1,25 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 export default function Login() {
 
+  const [data, setData] = useState ({email: "", senha: ""})
+
+  const handleChange = (event) => {
+    setData({
+      ...data,
+      [event.target.name]: event.target.value
+    })
+  }
+
+  const URL = "http://localhost:3001/login"
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const cliente = await axios.post(URL,data);
+    console.log(cliente)
+  }
+
   return (
     <div className="container">
       <div className="NewContact">
-            <form>
+            <form onSubmit={handleSubmit}>
               <label><h3>E-mail:
                   <input
                     type="text"
                     name="email"
                     placeholder="E-Mail"
+                    defaultValue={data.email}
+                    onChange={handleChange}
                     required
                   /></h3>
               </label>
               <label><h3>Senha:
                   <input
-                    type="text"
-                    name="email"
+                    type="password"
+                    name="senha"
                     placeholder="Senha"
+                    defaultValue={data.senha}
+                    onChange={handleChange}
                     required
                   /></h3>
               </label>
