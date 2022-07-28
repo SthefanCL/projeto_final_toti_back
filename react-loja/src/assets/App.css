@@ -1,7 +1,6 @@
 * {
     font-family: sans-serif;
     text-decoration: none;
-    color: #154360;
 }
 .container{
   display: flex;
@@ -57,7 +56,7 @@
 }
 .Cards{
   margin: 20px 10px 20px 10px;
-  border: 1px solid #154360;
+  border: 1px solid;
   border-radius: 5px;
 }
 .img_produto{
@@ -67,18 +66,18 @@
 .Cards p{
   margin: 10px;
   font-weight: bold;
-
 }
 .Cards:hover{
   cursor: pointer;
   background-color: #C9D6DD;
   margin: 1%;
+  color: black;
 }
 .Menu{
   display: flex;
   justify-content: space-between;
-  background-color: #154360;
-  padding:  0 20px 0 20px;
+  background-color: black;
+  padding:  0 30px 0 30px;
 }
 
 .Menu p{
@@ -90,4 +89,7 @@
   background-color: #B7D4E5;
   color: black;
   padding: 0 2px 0 2px;
+}
+hr{
+  width: 90%;
 }
