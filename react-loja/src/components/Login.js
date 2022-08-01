@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+
 
 export default function Login() {
 
+  const Navigate = useNavigate();
   const [data, setData] = useState ({email: "", senha: ""})
 
   const handleChange = (event) => {
@@ -17,8 +19,12 @@ export default function Login() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const cliente = await axios.post(URL,data);
-    console.log(cliente)
+    const cliente = await axios.post(URL,data)
+    .then((response) => {
+      Navigate('/');
+    }, (error) => {
+      console.log(error);
+    });
   }
 
   return (

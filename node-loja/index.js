@@ -64,7 +64,13 @@ const confirmaLogin = (req, res, next) => {
     }
 
 app.post("/login", confirmaLogin, (req, res) =>  {
-    res.send("Bem-vindo " + req.body.email)
+    db.all("SELECT * FROM cliente WHERE email_cliente=?", [req.body.email], (err, rows) => {
+        if (err) {
+            res.status(400).json({ "error": err.message });
+            return;
+        }
+        res.status(200).json({ "id_cliente": rows[0].id_cliente });
+    });
 })
 
 app.put("/cliente",(req, res, next) => {
@@ -186,3 +192,67 @@ app.delete("/pedido", (req, res, next) => {
 app.listen(3001, () => {
     console.log('Iniciando o Express-JS na porta 3001')
 })
+
+
+
+/*--------------------------------------------------
+--------------------------CRUD CART-----------------
+--------------------------------------------------*/
+app.post("/cart",(req, res, next) => {
+    db.run("INSERT INTO cart (id_cliente,id_produto,quantidade)VALUES(?,?,?)",
+        [req.body.id_cliente, req.body.id_produto, req.body.quantidade],
+        function(err, result){
+            if(err) {
+                res.status(400).json({ "error": err.message })
+                return;
+            }
+            res.status(201).json({
+                "Produto Cadastrado ID": this.lastID
+            })
+        }) 
+})
+
+app.get("/cart", (req, res, next) => {
+db.all("SELECT * FROM cart AS c JOIN produto AS p ON c.id_produto = p.id_produto WHERE id_cliente=?", [req.query.id_cliente], (err, rows) => {
+    if (err) {
+        res.status(400).json({ "error": err.message });
+        return;
+    }
+    res.status(200).json(rows);
+});
+});
+
+app.put("/cart",(req, res, next) => {
+    db.run("UPDATE cart SET quantidade=? WHERE id_produto=? and id_cliente=?",
+        [req.body.quantidade, req.body.id_produto, req.body.id_cliente],
+        function(err, result){
+            if(err) {
+                res.status(400).json({ "error": err.message })
+                return;
+            }
+            res.status(201).json("ID: " + req.body.id_produto + " Atualizado")
+        }) 
+})
+
+app.put("/cart/updatequantidade",(req, res, next) => {
+    db.run("UPDATE cart SET quantidade=? WHERE id=? and id_cliente=?",
+        [req.body.nova_quantidade, req.body.id, req.body.id_cliente],
+        function(err, result){
+            if(err) {
+                res.status(400).json({ "error": err.message })
+                return;
+            }
+            res.status(201).json("ID: " + req.body.id_produto + " Atualizado")
+        }) 
+})
+
+app.delete("/cart/:id_cliente", (req, res, next) => {
+    console.log(req.params.id_cliente);
+  db.all("DELETE FROM cart WHERE id_cliente=?", [req.params.id_cliente],
+      res.status(200).json(req.params.id + ": eliminado"));
+});
+
+app.delete("/cart/:id_produto/:id_cliente", (req, res, next) => {
+    db.all("DELETE FROM cart WHERE id_produto=? and id_cliente=?", [req.params.id_produto, req.params.id_cliente],
+        res.status(200).json(req.params.id_produto + ": eliminado"));
+  });
