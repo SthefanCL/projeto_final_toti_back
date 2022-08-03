@@ -247,7 +247,6 @@ app.put("/cart/updatequantidade",(req, res, next) => {
 })
 
 app.delete("/cart/:id_cliente", (req, res, next) => {
-    console.log(req.params.id_cliente);
   db.all("DELETE FROM cart WHERE id_cliente=?", [req.params.id_cliente],
       res.status(200).json(req.params.id + ": eliminado"));
 });
